@@ -87,7 +87,7 @@ background:rgba(0,0,0,0.25);
 
 .hero-img{
     width:100%;
-    border-radius:20px;
+    /* border-radius:20px; */
 }
 
 .hero-text{
@@ -142,7 +142,40 @@ background:rgba(0,0,0,0.25);
     font-size:48px;
 }
 
+.footer-marquee {
+  width: 100%;
+  overflow: hidden; /* Hides the text when it leaves the screen */
+  background: #203a24;
+  color: #fff;
+  padding: 15px 0;
+  white-space: nowrap; /* Keeps everything on one line */
+}
 
+.marquee-content {
+  display: inline-block;
+  padding-left: 100%; /* Start the text off-screen to the right */
+  animation: scroll-text 15s linear infinite;
+}
+
+.marquee-content span {
+  font-size: 2rem;
+  font-weight: bold;
+  padding-right: 50px;
+}
+
+@keyframes scroll-text {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-5%);
+  }
+}
+
+/* Optional: Pause on hover so people can read it! */
+.footer-marquee:hover .marquee-content {
+  animation-play-state: paused;
+}
 
 /* CATS SECTION */
 
