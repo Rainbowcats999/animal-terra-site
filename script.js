@@ -24,3 +24,28 @@ update();
 
 });
 
+// Fade-in cards on scroll using IntersectionObserver
+const cards = document.querySelectorAll('.card');
+
+if ('IntersectionObserver' in window && cards.length) {
+	const obsOptions = {
+		root: null,
+		rootMargin: '0px',
+		threshold: 0.15
+	};
+
+	const observer = new IntersectionObserver((entries, observerRef) => {
+		entries.forEach(entry => {
+			if (entry.isIntersecting) {
+				entry.target.classList.add('visible');
+				observerRef.unobserve(entry.target);
+			}
+		});
+	}, obsOptions);
+
+	cards.forEach(card => observer.observe(card));
+} else {
+	// Fallback: make cards visible if IntersectionObserver isn't supported
+	cards.forEach(card => card.classList.add('visible'));
+}
+
