@@ -79,13 +79,13 @@ background:#2f5d3a;
 color:white;
 border:none;
 padding:12px 25px;
-border-radius:30px;
+border-radius:15px;
 font-weight:600;
 transition:0.3s;
 }
 
 .donate-btn:hover{
-background:#3f7c4d;
+background:#69dd84;
 transform:scale(1.05);
 }
 
@@ -173,7 +173,7 @@ background:rgba(0,0,0,0.25);
   overflow: hidden; /* Hides the text when it leaves the screen */
   background: #203a24;
   color: #fff;
-    padding: 15px 0;
+    padding: 20px 0;
     margin-top: 0;
   white-space: nowrap; /* Keeps everything on one line */
 }
@@ -263,7 +263,7 @@ transition:all 0.3s ease;
 
 button:hover{
 transform:scale(1.05);
-background:#ff9f3f;
+background:#f7bc81;
 }
 
 
