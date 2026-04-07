@@ -1,28 +1,42 @@
-const counters = document.querySelectorAll('.stat h1');
+// Counter animation for elements with class `.counter`.
+const counters = document.querySelectorAll('.counter');
 
-counters.forEach(counter => {
+function animateCounter(el) {
+	const target = parseInt(el.dataset.target) || 0;
+	const suffix = el.dataset.suffix || '';
+	let count = 0;
+	const step = Math.max(1, Math.ceil(target / 100));
 
-let target = counter.innerText;
-target = parseInt(target);
+	function update() {
+		count += step;
+		if (count < target) {
+			el.textContent = count + suffix;
+			requestAnimationFrame(update);
+		} else {
+			el.textContent = target + suffix;
+		}
+	}
 
-let count = 0;
-
-let update = () => {
-
-count += Math.ceil(target/100);
-
-if(count < target){
-counter.innerText = count + "+";
-requestAnimationFrame(update);
-}else{
-counter.innerText = target + "+";
+	update();
 }
 
+// Start counters when the stats section comes into view.
+const statsSection = document.querySelector('.stats');
+if ('IntersectionObserver' in window && statsSection) {
+	const statsObserver = new IntersectionObserver((entries, obs) => {
+		entries.forEach(entry => {
+			if (entry.isIntersecting) {
+				counters.forEach(c => animateCounter(c));
+				obs.unobserve(entry.target);
+			}
+		});
+	}, { root: null, threshold: 0.25 });
+
+	statsObserver.observe(statsSection);
+} else {
+	// Fallback: animate immediately
+	counters.forEach(c => animateCounter(c));
 }
-
-update();
-
-});
 
 // Fade-in cards on scroll using IntersectionObserver
 const cards = document.querySelectorAll('.card');
