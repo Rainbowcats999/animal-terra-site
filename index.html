@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Animal Terra</title>
+    <title>Animal Terra </title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -23,7 +23,7 @@
 
     <nav>
         <button class="donate-btn">Donate 🤍</button>
-        <div class="menu">☰</div>
+        <div class="menu"></div>
     </nav>
 
 </header>
@@ -287,17 +287,17 @@
 
     <div class="stat stat--green">
         <h1><span class="counter" data-target="20" data-suffix="+">20+</span></h1>
-        <p>Cats Rescued</p>
+        <p style="color: rgb(46, 102, 44);">Cats Rescued</p>
     </div>
 
     <div class="stat stat--brown">
         <h1><span class="counter" data-target="100" data-suffix="M+">100M+</span></h1>
-        <p>Still Starving in Uganda Alone</p>
+        <p style="color: rgb(175, 93, 45);">Still Starving in Uganda Alone</p>
     </div>
 
     <div class="stat stat--green">
         <h1><span class="counter" data-target="10" data-suffix="+">10+</span></h1>
-        <p>Donation Links Available</p>
+        <p style="color: rgb(46, 102, 44);">Donation Links Available</p>
     </div>
 
 </section>
@@ -313,35 +313,71 @@
         <span class="ornament-heart">❤</span>
     </div>
 
-    <div class="card-container">
+    <!-- Carousel: horizontally scrollable set of cards -->
+    <div class="carousel">
+        <button class="carousel-btn prev" aria-label="Previous">‹</button>
+        <div class="carousel-track-container">
+            <div class="carousel-track">
+                <div class="card">
+                    <img src="imgs/cat1.jpg" alt="Cute cat 1">
+                    <h3>Rescue a Cat Today</h3>
+                    <p>Help feed and shelter stray cats.</p>
+                    <button class="btn btn--green">Donate Now</button>
+                </div>
 
-        <div class="card">
-            <img src="imgs/cat1.jpg" alt="Cute cat 1">
-            <h3>Rescue a Cat Today</h3>
-            <p>Help feed and shelter stray cats.</p>
-            <button class="btn btn--green">Donate Now</button>
+                <div class="card">
+                    <img src="imgs/cat2.jpg" alt="Cute cat 2">
+                    <h3>Hungry Cats Need You</h3>
+                    <p>Food and care saves lives.</p>
+                    <button class="btn btn--orange">Donate Now</button>
+                </div>
+
+                <div class="card">
+                    <img src="imgs/cat3.jpg" alt="Cute cat 3">
+                    <h3>Your Donation Matters</h3>
+                    <p>Every bit helps.</p>
+                    <button class="btn btn--green">Donate Now</button>
+                </div>
+
+                <div class="card">
+                    <img src="imgs/cat4.jpg" alt="Cute cat 4">
+                    <h3>Foster a Kitten</h3>
+                    <p>Temporary homes save lives.</p>
+                    <button class="btn btn--orange">Donate Now</button>
+                </div>
+
+                <div class="card">
+                    <img src="imgs/cat5.jpg" alt="Cute cat 5">
+                    <h3>Support Medical Care</h3>
+                    <p>Your gift helps with vet bills.</p>
+                    <button class="btn btn--green">Donate Now</button>
+                </div>
+
+                <div class="card">
+                    <img src="imgs/cat6.jpg" alt="Cute cat 6">
+                    <h3>Volunteer With Us</h3>
+                    <p>Help at local shelters and events.</p>
+                    <button class="btn btn--orange">Donate Now</button>
+                </div>
+
+            </div>
         </div>
-
-        <div class="card">
-            <img src="imgs/cat2.jpg" alt="Cute cat 2">
-            <h3>Hungry Cats Need You</h3>
-            <p>Food and care saves lives.</p>
-            <button class="btn btn--orange">Donate Now</button>
-        </div>
-
-        <div class="card">
-            <img src="imgs/cat3.jpg" alt="Cute cat 3">
-            <h3>Your Donation Matters</h3>
-            <p>Every bit helps.</p>
-            <button class="btn btn--green">Donate Now</button>
-        </div>
-
+        <button class="carousel-btn next" aria-label="Next">›</button>
     </div>
 
 </section>
 
 
 <!-- FOOTER -->
+
+<!-- Wave divider + colorful highlight band above footer (matches wireframe) -->
+<!--<div class="wave-divider-bottom">
+    <svg viewBox="0 0 1440 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,20 C200,100 400,0 720,40 C1040,80 1200,10 1440,60 L1440,120 L0,120 Z" fill="#f6efe6" />
+    </svg>
+</div>
+
+<section class="highlight-band" aria-hidden="true"></section>-->
 
 <footer>
 

@@ -134,21 +134,22 @@ transform:scale(1.05);
     /* object-fit: contain; */
 /* } */
 
-.hero-img{
+/* .hero-img{ 
     display: block;
-    width: 100%;
-    height: 100%;
+    width: 300px;
+    height: auto;
     border-radius: 0;
     background-color: transparent;
-    object-fit: cover;
+    object-fit: fill;
 }
-.hero-media{
+
+/* .hero-media{ 
     display: block;
     width: 100%;
-    height: 100%;
+    height: auto;
     background-color: transparent;
-    object-fit: cover;
-}
+    object-fit: fill;
+}*/
 
 .hero-text p{
     font-size:22px;
@@ -293,6 +294,50 @@ transform:scale(1.05);
     margin-top:30px;
 }
 
+/* Carousel styles */
+.carousel{
+    position:relative;
+    display:flex;
+    align-items:center;
+    margin-top:30px;
+}
+
+.carousel-track-container{
+    overflow:hidden;
+    flex:1 1 auto;
+}
+
+.carousel-track{
+    display:flex;
+    gap:20px;
+    transition:transform 400ms ease;
+    will-change: transform;
+}
+
+.carousel-btn{
+    background:rgba(255,255,255,0.9);
+    border:1px solid rgba(0,0,0,0.08);
+    width:44px;
+    height:44px;
+    border-radius:8px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    box-shadow:0 6px 18px rgba(0,0,0,0.08);
+    margin:0 12px;
+}
+
+.carousel-btn:disabled{
+    opacity:0.35;
+    cursor:default;
+}
+
+/* ensure cards inside carousel have fixed width to slide */
+.carousel .card{
+    flex:0 0 260px;
+}
+
 .card img{
     width:100%;
     height:140px;
@@ -308,6 +353,7 @@ transform:scale(1.05);
 .card{
 background:white;
 width:250px;
+height:200px;
 border-radius:12px;
 padding:20px;
 text-align:center;
@@ -413,3 +459,21 @@ transition:0.3s;
 color:#f28c28;
 transform:scale(1.2);
 }
+
+/* Wave divider and plain colorful highlight band (no text/buttons) */
+/* .wave-divider-bottom svg{ 
+    display:block;
+    width:100%;
+    height:96px;
+}*/
+
+/* .highlight-band{ 
+    width:100%;
+    height:120px; 
+    background: linear-gradient(90deg, #fceabb 0%, #f8b500 45%, #f28c28 100%);
+
+ } */
+
+/* @media (max-width: 768px){ 
+    .highlight-band{ height:80px; }
+}*/

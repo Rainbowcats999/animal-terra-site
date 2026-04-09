@@ -42,11 +42,7 @@ if ('IntersectionObserver' in window && statsSection) {
 const cards = document.querySelectorAll('.card');
 
 if ('IntersectionObserver' in window && cards.length) {
-	const obsOptions = {
-		root: null,
-		rootMargin: '0px',
-		threshold: 0.15
-	};
+	const obsOptions = { root: null, rootMargin: '0px', threshold: 0.15 };
 
 	const observer = new IntersectionObserver((entries, observerRef) => {
 		entries.forEach(entry => {
@@ -61,5 +57,50 @@ if ('IntersectionObserver' in window && cards.length) {
 } else {
 	// Fallback: make cards visible if IntersectionObserver isn't supported
 	cards.forEach(card => card.classList.add('visible'));
+}
+
+// Simple carousel logic for .carousel-track
+const track = document.querySelector('.carousel-track');
+const prevBtn = document.querySelector('.carousel-btn.prev');
+const nextBtn = document.querySelector('.carousel-btn.next');
+if (track && prevBtn && nextBtn) {
+	const trackContainer = document.querySelector('.carousel-track-container');
+	const slides = Array.from(track.querySelectorAll('.card'));
+	let index = 0;
+	let visible = 1;
+
+	function updateVisibleCount() {
+		const containerWidth = trackContainer.getBoundingClientRect().width;
+		const slideWidth = slides[0].getBoundingClientRect().width + parseFloat(getComputedStyle(track).gap || 20);
+		visible = Math.max(1, Math.floor((containerWidth + 10) / slideWidth));
+		if (index > slides.length - visible) index = Math.max(0, slides.length - visible);
+	}
+
+	function update() {
+		const slideWidth = slides[0].getBoundingClientRect().width + parseFloat(getComputedStyle(track).gap || 20);
+		const moveX = index * slideWidth;
+		track.style.transform = 'translateX(-' + moveX + 'px)';
+		prevBtn.disabled = index === 0;
+		nextBtn.disabled = index >= slides.length - visible;
+	}
+
+	window.addEventListener('resize', () => {
+		updateVisibleCount();
+		update();
+	});
+
+	prevBtn.addEventListener('click', () => {
+		index = Math.max(0, index - 1);
+		update();
+	});
+
+	nextBtn.addEventListener('click', () => {
+		index = Math.min(slides.length - visible, index + 1);
+		update();
+	});
+
+	// initialize
+	updateVisibleCount();
+	update();
 }
 
