@@ -112,17 +112,17 @@ transform:scale(1.05);
 .hero-img{
     display: block;
     width: 100%;
-    height: 400px; /* natural image height */
+    height: 750px; /* natural image height */
     border-radius: 0;
     background-color: transparent;
 }
 
-.hero-media{
+/* .hero-media{ 
     display: block;
     width: 100%;
     height: auto;
     background-color: transparent;
-}
+}*/
 
 /* If a video is present, make it cover the banner area while preserving rounded corners */
 /* .hero-media{ */
