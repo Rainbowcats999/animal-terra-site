@@ -84,6 +84,19 @@ border:none;
 padding:12px 25px;
 border-radius:15px;
 font-weight:600;
+:root{
+    --cat-cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 64 64'><polygon points='16,18 24,8 32,18' fill='%232f5d3a'/><polygon points='48,18 40,8 32,18' fill='%232f5d3a'/><circle cx='32' cy='32' r='14' fill='%232f5d3a'/><circle cx='26' cy='30' r='2' fill='%23ffffff'/><circle cx='38' cy='30' r='2' fill='%23ffffff'/><path d='M28 38 Q32 42 36 38' stroke='%23ffffff' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>") 12 12, auto;
+}
+
+/* Apply cat cursor site-wide when body has .cat-cursor-active */
+body.cat-cursor-active, body.cat-cursor-active *{
+  cursor: var(--cat-cursor);
+}
+
+/* For interactive elements prefer pointer cursor but still show cat icon */
+button, a, .carousel-btn{
+  cursor: var(--cat-cursor);
+}
 transition:0.3s;
 }
 

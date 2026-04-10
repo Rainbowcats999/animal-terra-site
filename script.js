@@ -3,6 +3,18 @@ const counters = document.querySelectorAll('.counter');
 
 function animateCounter(el) {
 	const target = parseInt(el.dataset.target) || 0;
+
+// Enable custom cat cursor site-wide on non-touch devices
+document.addEventListener('DOMContentLoaded', () => {
+	try {
+		if (!('ontouchstart' in window)) {
+			document.body.classList.add('cat-cursor-active');
+		}
+	} catch (e) {
+		// silently fail if something unexpected happens
+		console.warn('Cat cursor init failed', e);
+	}
+});
 	const suffix = el.dataset.suffix || '';
 	let count = 0;
 	const step = Math.max(1, Math.ceil(target / 100));
