@@ -32,6 +32,12 @@ body::before {
         opacity: 0.08;
 }
 
+h4 {
+    font-size: 18px;
+    color: #2f5d3a;
+    margin-bottom: 8px;
+    text-align: center;
+}
 
 /* NAVBAR */
 
