@@ -366,8 +366,10 @@ transform:scale(1.05);
     padding:20px;
     border-radius:12px;
     box-shadow:0 10px 30px rgba(0,0,0,0.08);
-    max-width:1200px; 
+    max-width:1700px; 
     margin:0 auto;
+    margin-top: 100px;
+    margin-bottom: 100px;
     width:100%;
 }
 .story-image{
@@ -391,7 +393,7 @@ transform:scale(1.05);
     font-size:22px;
     color:#2f5d3a;
 }
-.story-content h4{
+.story-content p{
     line-height:1.5;
     color:#333;
     margin-bottom:12px;
