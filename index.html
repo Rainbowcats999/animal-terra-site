@@ -365,10 +365,54 @@ Please donate if you can, every penny makes a difference.</p>
     </div>
 
     <!-- Carousel: horizontally scrollable set of cards -->
-    <div class="carousel">
+    <!-- Using CSS-only infinite scroll: add class "css-carousel" and duplicate cards inside the track -->
+    <div class="carousel css-carousel">
         <button class="carousel-btn prev" aria-label="Previous">‹</button>
         <div class="carousel-track-container">
             <div class="carousel-track">
+                <div class="card">
+                    <img src="imgs/cat1.jpg" alt="Cute cat 1">
+                    <h3>Rescue a Cat Today</h3>
+                    <p>Help feed and shelter stray cats.</p>
+                    <button class="btn btn--green">Donate Now</button>
+                </div>
+
+                <div class="card">
+                    <img src="imgs/cat2.jpg" alt="Cute cat 2">
+                    <h3>Hungry Cats Need You</h3>
+                    <p>Food and care saves lives.</p>
+                    <button class="btn btn--orange">Donate Now</button>
+                </div>
+
+                <div class="card">
+                    <img src="imgs/cat3.jpg" alt="Cute cat 3">
+                    <h3>Your Donation Matters</h3>
+                    <p>Every bit helps.</p>
+                    <button class="btn btn--green">Donate Now</button>
+                </div>
+
+                <div class="card">
+                    <img src="imgs/cat4.jpg" alt="Cute cat 4">
+                    <h3>Foster a Kitten</h3>
+                    <p>Temporary homes save lives.</p>
+                    <button class="btn btn--orange">Donate Now</button>
+                </div>
+
+                <div class="card">
+                    <img src="imgs/cat5.jpg" alt="Cute cat 5">
+                    <h3>Support Medical Care</h3>
+                    <p>Your gift helps with vet bills.</p>
+                    <button class="btn btn--green">Donate Now</button>
+                </div>
+
+                <div class="card">
+                    <img src="imgs/cat6.jpg" alt="Cute cat 6">
+                    <h3>Volunteer With Us</h3>
+                    <p>Help at local shelters and events.</p>
+                    <button class="btn btn--orange">Donate Now</button>
+                </div>
+
+                <!-- duplicate set for seamless CSS loop -->
                 <div class="card">
                     <img src="imgs/cat1.jpg" alt="Cute cat 1">
                     <h3>Rescue a Cat Today</h3>

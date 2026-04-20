@@ -333,6 +333,30 @@ transform:scale(1.05);
     will-change: transform;
 }
 
+/* CSS-only infinite carousel animation (seamless loop)
+   Requires the HTML carousel to have the `css-carousel` class and the track
+   to contain two identical sets of slides (we duplicate them in the HTML). */
+.carousel.css-carousel{
+    overflow:hidden;
+}
+.carousel.css-carousel .carousel-track{
+    display:flex;
+    gap:20px;
+    align-items:stretch;
+    /* speed control */
+    --scroll-duration: 22s;
+    animation: scroll-left var(--scroll-duration) linear infinite;
+}
+.carousel.css-carousel:hover .carousel-track{
+    animation-play-state: paused;
+}
+.carousel.css-carousel .carousel-btn{ display:none; }
+
+@keyframes scroll-left{
+    from{ transform: translateX(0); }
+    to{ transform: translateX(calc(-50%)); }
+}
+
 .carousel-btn{
     background:rgba(255,255,255,0.9);
     border:1px solid rgba(0,0,0,0.08);
@@ -356,6 +380,8 @@ transform:scale(1.05);
 .carousel .card{
     flex:0 0 260px;
 }
+
+
 
 /* Story card: image left, text right; stacks on mobile */
 .story-card{

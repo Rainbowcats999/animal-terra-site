@@ -3,18 +3,6 @@ const counters = document.querySelectorAll('.counter');
 
 function animateCounter(el) {
 	const target = parseInt(el.dataset.target) || 0;
-
-// Enable custom cat cursor site-wide on non-touch devices
-document.addEventListener('DOMContentLoaded', () => {
-	try {
-		if (!('ontouchstart' in window)) {
-			document.body.classList.add('cat-cursor-active');
-		}
-	} catch (e) {
-		// silently fail if something unexpected happens
-		console.warn('Cat cursor init failed', e);
-	}
-});
 	const suffix = el.dataset.suffix || '';
 	let count = 0;
 	const step = Math.max(1, Math.ceil(target / 100));
@@ -71,48 +59,63 @@ if ('IntersectionObserver' in window && cards.length) {
 	cards.forEach(card => card.classList.add('visible'));
 }
 
-// Simple carousel logic for .carousel-track
-const track = document.querySelector('.carousel-track');
-const prevBtn = document.querySelector('.carousel-btn.prev');
-const nextBtn = document.querySelector('.carousel-btn.next');
-if (track && prevBtn && nextBtn) {
-	const trackContainer = document.querySelector('.carousel-track-container');
-	const slides = Array.from(track.querySelectorAll('.card'));
-	let index = 0;
-	let visible = 1;
+// Simple carousel logic for .carousel-track (only initialize when not using CSS-only carousel)
+const carouselEl = document.querySelector('.carousel');
+if (carouselEl && !carouselEl.classList.contains('css-carousel')) {
+	const track = document.querySelector('.carousel-track');
+	const prevBtn = document.querySelector('.carousel-btn.prev');
+	const nextBtn = document.querySelector('.carousel-btn.next');
+	if (track && prevBtn && nextBtn) {
+		const trackContainer = document.querySelector('.carousel-track-container');
+		const slides = Array.from(track.querySelectorAll('.card'));
+		let index = 0;
+		let visible = 1;
 
-	function updateVisibleCount() {
-		const containerWidth = trackContainer.getBoundingClientRect().width;
-		const slideWidth = slides[0].getBoundingClientRect().width + parseFloat(getComputedStyle(track).gap || 20);
-		visible = Math.max(1, Math.floor((containerWidth + 10) / slideWidth));
-		if (index > slides.length - visible) index = Math.max(0, slides.length - visible);
-	}
+		function updateVisibleCount() {
+			const containerWidth = trackContainer.getBoundingClientRect().width;
+			const slideWidth = slides[0].getBoundingClientRect().width + parseFloat(getComputedStyle(track).gap || 20);
+			visible = Math.max(1, Math.floor((containerWidth + 10) / slideWidth));
+			if (index > slides.length - visible) index = Math.max(0, slides.length - visible);
+		}
 
-	function update() {
-		const slideWidth = slides[0].getBoundingClientRect().width + parseFloat(getComputedStyle(track).gap || 20);
-		const moveX = index * slideWidth;
-		track.style.transform = 'translateX(-' + moveX + 'px)';
-		prevBtn.disabled = index === 0;
-		nextBtn.disabled = index >= slides.length - visible;
-	}
+		function update() {
+			const slideWidth = slides[0].getBoundingClientRect().width + parseFloat(getComputedStyle(track).gap || 20);
+			const moveX = index * slideWidth;
+			track.style.transform = 'translateX(-' + moveX + 'px)';
+			prevBtn.disabled = index === 0;
+			nextBtn.disabled = index >= slides.length - visible;
+		}
 
-	window.addEventListener('resize', () => {
+		window.addEventListener('resize', () => {
+			updateVisibleCount();
+			update();
+		});
+
+		prevBtn.addEventListener('click', () => {
+			index = Math.max(0, index - 1);
+			update();
+		});
+
+		nextBtn.addEventListener('click', () => {
+			index = Math.min(slides.length - visible, index + 1);
+			update();
+		});
+
+		// initialize
 		updateVisibleCount();
 		update();
-	});
-
-	prevBtn.addEventListener('click', () => {
-		index = Math.max(0, index - 1);
-		update();
-	});
-
-	nextBtn.addEventListener('click', () => {
-		index = Math.min(slides.length - visible, index + 1);
-		update();
-	});
-
-	// initialize
-	updateVisibleCount();
-	update();
+	}
 }
+
+// Enable custom cat cursor site-wide on non-touch devices (kept separate so it doesn't interfere with functions above)
+document.addEventListener('DOMContentLoaded', () => {
+	try {
+		if (!('ontouchstart' in window)) {
+			document.body.classList.add('cat-cursor-active');
+		}
+	} catch (e) {
+		// silently fail if something unexpected happens
+		console.warn('Cat cursor init failed', e);
+	}
+});
 
