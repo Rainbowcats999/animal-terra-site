@@ -403,6 +403,7 @@ transform:scale(1.05);
     max-width:360px;
     overflow:hidden;
     border-radius:10px;
+    margin-right:40px;
 }
 .story-image img{
     width:100%;
